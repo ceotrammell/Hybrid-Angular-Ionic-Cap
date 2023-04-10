@@ -1,3 +1,97 @@
+### Commands:
+
+https://nodejs.org/en/download
+
+  
+```bash
+npm install -g @ionic/cli
+```
+  
+```bash
+npm install –g @angular/cli
+```
+  
+```bash
+git clone https://github.com/ceotrammell/Hybrid-Angular-Ionic-Cap.git
+```
+  
+
+cd /Hybrid-Angular-Ionic-Cap
+
+  
+```bash
+npm i
+```
+  
+```bash
+ionic serve
+```
+  
+
+### Capacitor:
+
+#### ios:
+
+##### Download Xcode:
+
+https://apps.apple.com/us/app/xcode/id497799835
+
+  
+```bash
+ionic capacitor add ios
+```
+  
+```bash
+ionic capacitor build ios
+```
+  
+
+(ionic capacitor open ios)
+
+  
+
+#### android:
+
+##### Download Android Studio:
+
+https://developer.android.com/
+
+  
+```bash
+ionic capacitor add android
+```
+  
+```bash
+ionic capacitor build android
+```
+  
+
+(ionic capacitor open android)
+
+  
+
+Further Documentation:
+
+### Ionic Framework:
+
+https://ionicframework.com/docs/angular/your-first-app
+
+  
+
+#### Capacitor:
+
+https://capacitorjs.com/solution/angular
+
+  
+
+#### Angular Framework:
+
+https://www.knowledgehut.com/blog/web-development/install-angular-cli
+
+  
+  
+  
+
 # The Ionic Super Starter 🎮
 
 <img src="https://user-images.githubusercontent.com/236501/32385619-bddac0ac-c08c-11e7-9ee4-9c892197191f.png" width="400" />
