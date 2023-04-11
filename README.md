@@ -1,4 +1,6 @@
-### Commands:
+
+# <i>Info Per Me:</i>
+### Initial commands:
 
 https://nodejs.org/en/download
 
@@ -23,19 +25,22 @@ cd /Hybrid-Angular-Ionic-Cap
 npm i
 ```
   
+  ```bash
+ionic build
+```
+  
 ```bash
 ionic serve
 ```
   
 
-### Capacitor:
+### Capacitor commands:
 
 #### ios:
 
 ##### Download Xcode:
 
 https://apps.apple.com/us/app/xcode/id497799835
-
   
 ```bash
 ionic capacitor add ios
@@ -45,10 +50,20 @@ ionic capacitor add ios
 ionic capacitor build ios
 ```
   
+```bash
+ionic capacitor open ios
+```
 
-(ionic capacitor open ios)
+##### Cocoa Pods issues?
+https://capacitorjs.com/docs/getting-started/environment-setup
 
-  
+```bash
+sudo brew install cocoapods
+```
+  cd /ios/App
+```bash
+sudo pod install
+```
 
 #### android:
 
@@ -65,126 +80,140 @@ ionic capacitor add android
 ionic capacitor build android
 ```
   
-
-(ionic capacitor open android)
-
+```bash
+ionic capacitor open android
+```
+##### Java Issues?
+https://capacitorjs.com/docs/getting-started/environment-setup
   
 
-Further Documentation:
 
-### Ionic Framework:
 
+### Ionic Framework Docs :
+
+#### General
+https://ionicframework.com/docs/intro/cli
+https://ionicframework.com/docs/cli/commands/start
+
+#### Angular
 https://ionicframework.com/docs/angular/your-first-app
 
-  
+#### React
+https://ionicframework.com/docs/react/your-first-app
 
-#### Capacitor:
+#### Vue
+  https://ionicframework.com/docs/vue/your-first-app
+
+#### Capacitor
 
 https://capacitorjs.com/solution/angular
 
   
 
-#### Angular Framework:
+### Angular Framework Info:
 
-https://www.knowledgehut.com/blog/web-development/install-angular-cli
+https://angular.io/
 
-  
-  
-  
+### React Framework Info:
 
-# The Ionic Super Starter 🎮
+https://react.dev/
 
-<img src="https://user-images.githubusercontent.com/236501/32385619-bddac0ac-c08c-11e7-9ee4-9c892197191f.png" width="400" />
+### Vue Framework Info:
 
-The Ionic Super Starter is a batteries-included starter project for Ionic apps
-complete with pre-built pages, providers, and best practices for Ionic
-development.
+https://vuejs.org/
 
-The goal of the Super Starter is to get you from zero to app store faster than
-before, with a set of opinions from the Ionic team around page layout,
-data/user management, and project structure.
+### Common style libraries (outside of ionic):
+https://tailwindcss.com/
+https://getbootstrap.com/
 
-The way to use this starter is to pick and choose the various page types you
-want use, and remove the ones you don't. If you want a blank slate, this
-starter isn't for you (use the `blank` type instead).
+# <i>Info Per Ionic:</i>
 
-One of the big advances in Ionic was moving from a rigid route-based navigation
-system to a flexible push/pop navigation system modeled off common native SDKs.
-We've embraced this pattern to provide a set of reusable pages that can be
-navigated to anywhere in the app. Take a look at the [Settings
-page](https://github.com/ionic-team/starters/blob/master/ionic-angular/official/super/src/pages/settings/settings.html)
-for a cool example of a page navigating to itself to provide a different UI
-without duplicating code.
+# Ionic Angular Conference Application
+
+This application is purely a kitchen-sink demo of the Ionic Framework and Angular.
+
+**There is not an actual Ionic Conference at this time.** This project is just to show off Ionic components in a real-world application. Please go through the steps in [CONTRIBUTING](https://github.com/ionic-team/ionic-conference-app/blob/master/.github/CONTRIBUTING.md) before submitting an issue.
+
+## React and Vue Versions
+
+We've built versions of this Conference app in React and Vue for developers that would prefer to use one of those framework options:
+
+[https://github.com/ionic-team/ionic-react-conference-app](https://github.com/ionic-team/ionic-react-conference-app)
+
+[https://github.com/ionic-team/ionic-vue-conference-app](https://github.com/ionic-team/ionic-vue-conference-app)
 
 ## Table of Contents
+- [Getting Started](#getting-started)
+- [Contributing](#contributing)
+- [App Preview](#app-preview)
+- [Deploying](#deploying)
+  - [Progressive Web App](#progressive-web-app)
+  - [Android](#android)
+  - [iOS](#ios)
 
-1. [Getting Started](#getting-started)
-2. [Pages](#pages)
-3. [Providers](#providers)
-4. [i18n](#i18n) (adding languages)
 
-## <a name="getting-started"></a>Getting Started
+## Getting Started
 
-To test this starter out, install the latest version of the Ionic CLI and run:
+* [Download the installer](https://nodejs.org/) for Node LTS.
+* Install the ionic CLI globally: `npm install -g ionic`
+* Clone this repository: `git clone https://github.com/ionic-team/ionic-conference-app.git`.
+* Run `npm install` from the project root.
+* Run `ionic serve` in a terminal from the project root.
+* Profit. :tada:
 
-```bash
-ionic start mySuperApp super
-```
+_Note: See [How to Prevent Permissions Errors](https://docs.npmjs.com/getting-started/fixing-npm-permissions) if you are running into issues when trying to install packages globally._
 
-## Pages
+## Contributing
 
-The Super Starter comes with a variety of ready-made pages. These pages help
-you assemble common building blocks for your app so you can focus on your
-unique features and branding.
+See [CONTRIBUTING.md](https://github.com/ionic-team/ionic-conference-app/blob/master/.github/CONTRIBUTING.md) :tada::+1:
 
-The app loads with the `FirstRunPage` set to `TutorialPage` as the default. If
-the user has already gone through this page once, it will be skipped the next
-time they load the app.
 
-If the tutorial is skipped but the user hasn't logged in yet, the Welcome page
-will be displayed which is a "splash" prompting the user to log in or create an
-account.
+## App Preview
 
-Once the user is authenticated, the app will load with the `MainPage` which is
-set to be the `TabsPage` as the default.
+### [Menu](https://github.com/ionic-team/ionic-conference-app/blob/master/src/app/pages/menu/menu.html)
 
-The entry and main pages can be configured easily by updating the corresponding
-variables in
-[src/pages/index.ts](https://github.com/ionic-team/starters/blob/master/ionic-angular/official/super/src/pages/index.ts).
+| Material Design  | iOS  |
+| -----------------| -----|
+| ![Android Menu](/resources/screenshots/android-menu.png) | ![iOS Menu](/resources/screenshots/ios-menu.png) |
 
-Please read the
-[Pages](https://github.com/ionic-team/starters/tree/master/ionic-angular/official/super/src/pages)
-readme, and the readme for each page in the source for more documentation on
-each.
 
-## Providers
+### [Schedule Page](https://github.com/ionic-team/ionic-conference-app/blob/master/src/app/pages/schedule/schedule.html)
 
-The Super Starter comes with some basic implementations of common providers.
+| Material Design  | iOS  |
+| -----------------| -----|
+| ![Android Schedule](/resources/screenshots/android-schedule.png) | ![iOS Schedule](/resources/screenshots/ios-schedule.png) |
 
-### User
+### [Speakers Page](https://github.com/ionic-team/ionic-conference-app/blob/master/src/app/pages/speaker-list/speaker-list.html)
 
-The `User` provider is used to authenticate users through its
-`login(accountInfo)` and `signup(accountInfo)` methods, which perform `POST`
-requests to an API endpoint that you will need to configure.
+| Material Design  | iOS  |
+| -----------------| -----|
+| ![Android Speakers](/resources/screenshots/android-speakers.png) | ![iOS Speakers](/resources/screenshots/ios-speakers.png) |
 
-### Api
+### [Speaker Detail Page](https://github.com/ionic-team/ionic-conference-app/blob/master/src/app/pages/speaker-detail/speaker-detail.html)
 
-The `Api` provider is a simple CRUD frontend to an API. Simply put the root of
-your API url in the Api class and call get/post/put/patch/delete 
+| Material Design  | iOS  |
+| -----------------| -----|
+| ![Android Speaker Detail](/resources/screenshots/android-speaker-detail.png) | ![iOS Speaker Detail](/resources/screenshots/ios-speaker-detail.png) |
 
-## i18n
+### [About Page](https://github.com/ionic-team/ionic-conference-app/blob/master/src/app/pages/about/about.html)
 
-Ionic Super Starter comes with internationalization (i18n) out of the box with
-[ngx-translate](https://github.com/ngx-translate/core). This makes it easy to
-change the text used in the app by modifying only one file. 
+| Material Design  | iOS  |
+| -----------------| -----|
+| ![Android About](/resources/screenshots/android-about.png) | ![iOS About](/resources/screenshots/ios-about.png) |
 
-### Adding Languages
 
-To add new languages, add new files to the `src/assets/i18n` directory,
-following the pattern of LANGCODE.json where LANGCODE is the language/locale
-code (ex: en/gb/de/es/etc.).
+## Deploying
 
-### Changing the Language
+### Progressive Web App
 
-To change the language of the app, edit `src/app/app.component.ts` and modify
-`translate.use('en')` to use the LANGCODE from `src/assets/i18n/`
+1. Un-comment [these lines](https://github.com/ionic-team/ionic2-app-base/blob/master/src/index.html#L21)
+2. Run `ionic build --prod`
+3. Push the `www` folder to your hosting service
+
+### Android
+
+1. Run `ionic cordova run android --prod`
+
+### iOS
+
+1. Run `ionic cordova run ios --prod`
