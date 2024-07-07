@@ -1,14 +1,10 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
-import { SwUpdate } from '@angular/service-worker';
-
+import { SwUpdate, VersionReadyEvent } from '@angular/service-worker';
 import { MenuController, Platform, ToastController } from '@ionic/angular';
-
 import { StatusBar } from '@capacitor/status-bar';
 import { SplashScreen } from '@capacitor/splash-screen';
-
-import { Storage } from '@ionic/storage';
-
+import { Storage } from '@ionic/storage-angular';
 import { UserData } from './providers/user-data';
 
 @Component({
@@ -56,43 +52,46 @@ export class AppComponent implements OnInit {
   }
 
   async ngOnInit() {
-    this.checkLoginStatus();
     this.listenForLoginEvents();
 
-    this.swUpdate.available.subscribe(async res => {
-      const toast = await this.toastCtrl.create({
-        message: 'Update available!',
-        position: 'bottom',
-        buttons: [
-          {
-            role: 'cancel',
-            text: 'Reload'
-          }
-        ]
+    if (this.swUpdate.isEnabled) {
+      this.swUpdate.versionUpdates.subscribe(async (event) => {
+        if (event.type === 'VERSION_READY') {
+          const toast = await this.toastCtrl.create({
+            message: 'Update available!',
+            position: 'bottom',
+            buttons: [
+              {
+                role: 'cancel',
+                text: 'Reload'
+              }
+            ]
+          });
+
+          await toast.present();
+
+          toast
+            .onDidDismiss()
+            .then(() => this.swUpdate.activateUpdate())
+            .then(() => window.location.reload());
+        }
       });
-
-      await toast.present();
-
-      toast
-        .onDidDismiss()
-        .then(() => this.swUpdate.activateUpdate())
-        .then(() => window.location.reload());
-    });
+    }
   }
 
-  initializeApp() {
-    this.platform.ready().then(() => {
-      if (this.platform.is('hybrid')) {
-        StatusBar.hide();
-        SplashScreen.hide();
-      }
-    });
+  async initializeApp() {
+    await this.platform.ready();
+    await this.storage.create(); // Ensure storage is created first
+    if (this.platform.is('hybrid')) {
+      StatusBar.hide();
+      SplashScreen.hide();
+    }
+    await this.checkLoginStatus(); // Check login status after storage is created
   }
 
-  checkLoginStatus() {
-    return this.userData.isLoggedIn().then(loggedIn => {
-      return this.updateLoggedInStatus(loggedIn);
-    });
+  async checkLoginStatus() {
+    const loggedIn = await this.userData.isLoggedIn();
+    this.updateLoggedInStatus(loggedIn);
   }
 
   updateLoggedInStatus(loggedIn: boolean) {
@@ -115,15 +114,14 @@ export class AppComponent implements OnInit {
     });
   }
 
-  logout() {
-    this.userData.logout().then(() => {
-      return this.router.navigateByUrl('/app/tabs/schedule');
-    });
+  async logout() {
+    await this.userData.logout();
+    await this.router.navigateByUrl('/app/tabs/schedule');
   }
 
-  openTutorial() {
+  async openTutorial() {
     this.menu.enable(false);
-    this.storage.set('ion_did_tutorial', false);
-    this.router.navigateByUrl('/tutorial');
+    await this.storage.set('ion_did_tutorial', false);
+    await this.router.navigateByUrl('/tutorial');
   }
 }
