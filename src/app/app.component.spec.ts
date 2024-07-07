@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { SwUpdate } from '@angular/service-worker';
 import { TestBed, waitForAsync } from '@angular/core/testing';
 import { MenuController, Platform } from '@ionic/angular';
-import { IonicStorageModule } from '@ionic/storage';
+import { IonicStorageModule } from '@ionic/storage-angular';
 import { AppComponent } from './app.component';
 import { UserData } from './providers/user-data';
 
@@ -11,8 +11,6 @@ describe('AppComponent', () => {
   let menuSpy,
     routerSpy,
     userDataSpy,
-    statusBarSpy,
-    splashScreenSpy,
     swUpdateSpy,
     platformReadySpy,
     platformSpy,
@@ -38,12 +36,15 @@ describe('AppComponent', () => {
       ]
     }).compileComponents();
   }));
+
   beforeEach(() => {
     fixture = TestBed.createComponent(AppComponent);
     app = fixture.debugElement.componentInstance;
   });
 
   it('should create the app', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
     expect(app).toBeTruthy();
   });
 });
